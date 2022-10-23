@@ -30,4 +30,10 @@ import SignIn from '../Authentication/SignIn.vue';
 
 const auth = useAuth();
 const loginModal = ref(null);
+
+onMounted(() => {
+	if (auth.loggedIn) {
+		auth.fetchUser();
+	}
+})
 </script>
