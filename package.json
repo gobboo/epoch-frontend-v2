@@ -1,0 +1,27 @@
+{
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "devDependencies": {
+    "@nuxtjs/tailwindcss": "^6.0.1",
+    "nuxt": "3.0.0-rc.12",
+    "nuxt-icon": "^0.1.7"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.2.0",
+    "@fortawesome/free-brands-svg-icons": "^6.2.0",
+    "@fortawesome/pro-regular-svg-icons": "^6.2.0",
+    "@fortawesome/pro-solid-svg-icons": "^6.2.0",
+    "@fortawesome/vue-fontawesome": "^3.0.1",
+    "@pinia/nuxt": "^0.4.3",
+    "daisyui": "^2.33.0",
+    "pinia-plugin-persistedstate": "^2.3.0",
+    "sass": "^1.55.0",
+    "socket.io-client": "^4.5.3"
+  }
+}
