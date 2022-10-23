@@ -19,7 +19,7 @@ export class API {
 
 	static async fetch (path, options?): Promise<any> {
 		const config = useRuntimeConfig();
-
+		console.log(`${config.BASE_URL}${path}`)
 		const response = await $fetch(`${config.BASE_URL}${path}`, options || { });
 
 		// TODO Handle errors
