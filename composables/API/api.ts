@@ -1,4 +1,3 @@
-import nuxtConfig from "~~/nuxt.config";
 import { useAuth } from "~~/stores/auth";
 
 
@@ -6,7 +5,7 @@ export class API {
 	static async fetchWithAuth (path, options?): Promise<any> {
 		const config = useRuntimeConfig();
 
-		const response = await $fetch(`${config.baseUrl}${path}`, {
+		const response = await $fetch(`${config.BASE_URL}${path}`, {
 			...options,
 			headers: {
 				Authorization: `Bearer ${useAuth().accessToken}`
@@ -21,7 +20,7 @@ export class API {
 	static async fetch (path, options?): Promise<any> {
 		const config = useRuntimeConfig();
 
-		const response = await $fetch(`${config.baseUrl}${path}`, options || { });
+		const response = await $fetch(`${config.BASE_URL}${path}`, options || { });
 
 		// TODO Handle errors
 

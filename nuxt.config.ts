@@ -5,8 +5,8 @@ export default defineNuxtConfig({
 		port: 3001, // default: 3000
 	},
 
-	publicRuntimeConfig: {
-		baseUrl: process.env.BASE_URL || 'http://localhost:3000'
+	runtimeConfig: {
+		BASE_URL: ''
 	},
 
 	build: {
