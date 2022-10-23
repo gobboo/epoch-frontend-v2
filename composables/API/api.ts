@@ -5,7 +5,7 @@ export class API {
 	static async fetchWithAuth (path, options?): Promise<any> {
 		const config = useRuntimeConfig();
 
-		const response = await $fetch(`${config.BASE_URL}${path}`, {
+		const response = await $fetch(`${config.public.BASE_URL}${path}`, {
 			...options,
 			headers: {
 				Authorization: `Bearer ${useAuth().accessToken}`
@@ -19,8 +19,8 @@ export class API {
 
 	static async fetch (path, options?): Promise<any> {
 		const config = useRuntimeConfig();
-		console.log(`${config.BASE_URL}${path}`)
-		const response = await $fetch(`${config.BASE_URL}${path}`, options || { });
+
+		const response = await $fetch(`${config.public.BASE_URL}${path}`, options || { });
 
 		// TODO Handle errors
 

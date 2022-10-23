@@ -6,7 +6,7 @@
 				<h3 class="font-bold text-white text-center text-2xl ">Sign In</h3>
 				<p class="text-sm text-center mb-8 mt-2">Sign in with an existing social media</p>
 				<div class="flex flex-col gap-4">
-					<a v-for="(provider, index) in providers" :key="index" :class="`btn ${provider.color} normal-case`" :href="`${useRuntimeConfig().BASE_URL}/auth/${provider.name}`">
+					<a v-for="(provider, index) in providers" :key="index" :class="`btn ${provider.color} normal-case`" :href="`${useRuntimeConfig().public.BASE_URL}/auth/${provider.name}`">
 						<Icon :name="provider.icon" class="text-2xl mr-2" />
 						Sign in with {{ provider.name }}
 					</a>

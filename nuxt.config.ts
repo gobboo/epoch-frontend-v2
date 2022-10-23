@@ -6,7 +6,9 @@ export default defineNuxtConfig({
 	},
 
 	runtimeConfig: {
-		BASE_URL: ''
+		public: {
+			BASE_URL: ''
+		}
 	},
 
 	build: {
