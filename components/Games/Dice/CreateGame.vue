@@ -46,6 +46,7 @@ function showModal() {
 
 async function createGame() {
 	dice.createGame(buyIn.value, maxPlayers.value);
+	isShown.value = false;
 }
 
 defineExpose({

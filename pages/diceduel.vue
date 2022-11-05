@@ -11,7 +11,7 @@
 			</button>
 		</div>
 
-		<div class="my-games flex flex-col md:flex-row gap-8">
+		<div class="my-games flex flex-col md:flex-row gap-8 flex-wrap">
 			<GameInfo v-for="(game, index) in myGames" :key="index" :game="game" @view-game="showGame" />
 		</div>
 
@@ -20,7 +20,7 @@
 			Games
 		</h3>
 
-		<div class="my-games flex flex-col md:flex-row gap-8">
+		<div class="my-games flex flex-col md:flex-row gap-8 flex-wrap">
 			<GameInfo v-for="(game, index) in activeGames" :key="index" :game="game" @view-game="showGame" />
 		</div>
 
