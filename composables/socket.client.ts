@@ -1,4 +1,5 @@
 import { io, Socket } from "socket.io-client";
+import { useToast } from "vue-toastification";
 import { useAuth } from "~~/stores/auth";
 
 
@@ -52,8 +53,20 @@ class Client {
 		return this.socket;
 	}
 	
-	public emit (event: string, ...args: any[]): void {
-		this.socket.emit(event, ...args);
+	public emit (event: string, args: any, callback): void {
+		this.socket.emit(event, args, (response: any) => {
+			if (!response.success) {
+				const toast = useToast();
+
+				return toast.error(response.message);
+			}
+
+			callback(response);
+		});
+	}
+
+	public on (event: string, callback: (...args: any[]) => void): void {
+		this.socket.on(event, callback);
 	}
 }
 

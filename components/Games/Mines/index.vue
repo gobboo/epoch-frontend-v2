@@ -31,7 +31,7 @@ function clearCurrentGame() {
 
 onMounted(() => {
 	// Check if the user has a game in progress
-	$socket.emit('mine:fetch', (gameInfo: MineInfo) => {
+	$socket.emit('mine:fetch', null, (gameInfo: MineInfo) => {
 		if (gameInfo !== null) {
 			currentGame.value = gameInfo;
 			tiles.value.populateTiles(gameInfo.info.tilesTurned);

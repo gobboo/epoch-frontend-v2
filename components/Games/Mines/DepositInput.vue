@@ -70,14 +70,14 @@ const props = defineProps({
 const emit = defineEmits(['create-game', 'cashout-game'])
 
 function createGame() {
-	$socket.emit('mine:create', deposit.value, mineCount.value, (gameInfo: MineInfo) => {
+	$socket.emit('mine:create', { deposit: deposit.value, mineCount: mineCount.value }, (gameInfo: MineInfo) => {
 		emit('create-game', gameInfo)
 		auth.fetchUser();
 	})
 }
 
 function cashoutGame () {
-	$socket.emit('mine:cashout', (gameInfo: MineInfo) => {
+	$socket.emit('mine:cashout', null, (gameInfo: MineInfo) => {
 		emit('cashout-game', gameInfo)
 		auth.fetchUser();
 	})
