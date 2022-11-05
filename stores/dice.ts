@@ -64,24 +64,28 @@ export const useDice = defineStore('dice', {
 			}
 		},
 
-		async fetchGames () {
+		async fetchGames() {
 			this.games = await DiceService.fetchGames();
 		},
 
-		createGame (buyIn: number, maxPlayers: number) {
+		createGame(buyIn: number, maxPlayers: number) {
 			const { $socket } = useNuxtApp();
 
 			$socket.emit('dice:create', {
 				buyIn: buyIn,
 				maxPlayers: maxPlayers
-			}, () => {
+			}, (data: { success: boolean, message: string, game: DiceInfo }) => {
+				if (data.success) {
+					this.games.push(data.game);
+				}
+
 				useAuth().fetchUser();
 			});
 		},
 
-		async joinGame (gameId: string) {
+		async joinGame(gameId: string) {
 			const { $socket } = useNuxtApp();
-			
+
 			$socket.emit('dice:join', {
 				gameId: gameId
 			}, () => {

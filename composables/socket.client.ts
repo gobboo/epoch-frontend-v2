@@ -4,21 +4,19 @@ import { useAuth } from "~~/stores/auth";
 
 
 class Client {
-	protected url: string
 	protected socket: Socket
 
+	protected url: string
 	protected connected: boolean
 
-	constructor (url: string) {
-		this.url = url
+	constructor() { }
 
-		this.socket = this.connect()
-		this.connected = false;
+	public setUrl(url: string): void {
+		this.url = url;
 	}
 
-	private connect (): Socket {
-
-		const socket = io(this.url, {
+	public connect(): void {
+		this.socket = io(this.url, {
 			transportOptions: {
 				polling: {
 					extraHeaders: {
@@ -29,31 +27,35 @@ class Client {
 		});
 
 		// Check if the socket got connected
-		socket.on('connect', () => {
+		this.socket.on('connect', () => {
+			console.log('connected')
 			this.connected = true;
 		});
 
 		// Check if the socket got disconnected
-		socket.on('disconnect', () => {
+		this.socket.on('disconnect', () => {
 			this.connected = false;
 		});
-
-		return socket;
 	}
 
-	public reconnect (): void {
-		this.socket = this.connect();
+	public reconnect(): void {
+		this.socket.connect();
 	}
 
-	public isConnected (): boolean {
+	public isConnected(): boolean {
 		return this.connected;
 	}
 
-	public getSocket (): Socket {
+	public getSocket(): Socket {
 		return this.socket;
 	}
-	
-	public emit (event: string, args: any, callback): void {
+
+	public emit(event: string, args: any, callback): void {
+		if (!this.connected) return;
+
+		console.log(this.connected);
+		console.log(this.socket);
+
 		this.socket.emit(event, args, (response: any) => {
 			if (!response.success) {
 				const toast = useToast();
@@ -65,7 +67,7 @@ class Client {
 		});
 	}
 
-	public on (event: string, callback: (...args: any[]) => void): void {
+	public on(event: string, callback: (...args: any[]) => void): void {
 		this.socket.on(event, callback);
 	}
 }

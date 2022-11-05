@@ -1,5 +1,5 @@
 <template>
-	<div class="px-0 sm:px-12 lg:px-48 xl:px-96 relative mt-12">
+	<div class="px-0 sm:px-4 lg:px-8 xl:px-56 relative mt-12">
 		<div v-if="auth.loggedIn" class="flex justify-between items-center">
 			<h3 class="text-2xl text-white font-bold">
 				<Icon name="fa6-solid:gamepad" class="mr-1" />
@@ -11,7 +11,7 @@
 			</button>
 		</div>
 
-		<div class="my-games flex gap-8">
+		<div class="my-games flex flex-col md:flex-row gap-8">
 			<GameInfo v-for="(game, index) in myGames" :key="index" :game="game" @view-game="showGame" />
 		</div>
 
@@ -20,7 +20,7 @@
 			Games
 		</h3>
 
-		<div class="my-games flex gap-8">
+		<div class="my-games flex flex-col md:flex-row gap-8">
 			<GameInfo v-for="(game, index) in activeGames" :key="index" :game="game" @view-game="showGame" />
 		</div>
 
