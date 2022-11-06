@@ -145,6 +145,10 @@ const statusMap = {
 
 function showModal() {
 	isShown.value = true;
+
+	currentSpin.value = null;
+
+	resetReels();
 }
 
 function executeSpins() {
@@ -160,7 +164,7 @@ function executeSpins() {
 		for (let i = 0; i < players.length; i++) {
 			resetReels();
 
-			await new Promise((resolve) => setTimeout(resolve, 300));
+			await new Promise((resolve) => setTimeout(resolve, 50));
 
 			currentSpin.value = i;
 			const player = players[i];
@@ -170,7 +174,7 @@ function executeSpins() {
 			spinReel(roll.toString().padStart(4, '0'));
 
 			// Wait 1 second
-			await new Promise((resolve) => setTimeout(resolve, 4600));
+			await new Promise((resolve) => setTimeout(resolve, 4900));
 
 			player.roll = roll;
 		}
@@ -194,7 +198,7 @@ function spinReel(roll: string) {
 
 		const reelTop = 1097;
 
-		const rollOffset = (rollIndex * 54) + 48;
+		const rollOffset = 2700 + (rollIndex * 54) + 48;
 
 		const rollPosition = reelTop - rollOffset;
 
@@ -205,7 +209,7 @@ function spinReel(roll: string) {
 		// Index 1 2s duration
 		// Index 0 4.5s duration
 
-		const duration = (index === 3 ? .51 : index === 2 ? 2 : index === 1 ? 3 : 4.5) + 's';
+		const duration = (index === 3 ? 1.5 : index === 2 ? 2 : index === 1 ? 3 : 4.5) + 's';
 
 		reel.style.transitionDuration = duration;
 	});
