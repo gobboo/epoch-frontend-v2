@@ -198,7 +198,7 @@ function spinReel(roll: string) {
 
 		const reelTop = 1097;
 
-		const rollOffset = 2700 + (rollIndex * 54) + 48;
+		const rollOffset = 2160 + (rollIndex * 54) + 48;
 
 		const rollPosition = reelTop - rollOffset;
 
