@@ -32,6 +32,22 @@ export interface DiceInfo {
   };
 }
 
+export interface RouletteInfo {
+  _id: string;
+  players: [
+    {
+      user: User,
+      bet: number,
+      color: string
+    }
+  ];
+  status: string;
+  serverSeed: string;
+  serverSeedHash: string;
+  publicSeed: string;
+  roll: number;
+}
+
 export interface DiceBet {
   user: string,
   roll: number,

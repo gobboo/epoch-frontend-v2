@@ -10,6 +10,7 @@ module.exports = {
     `app.{js,ts,vue}`
   ],
   theme: {
+    fontFamily: ['Inter', 'sans-serif'], 
     extend: {
       colors: {
         discord: "#7289DA",
