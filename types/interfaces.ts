@@ -46,6 +46,7 @@ export interface RouletteInfo {
   serverSeedHash: string;
   publicSeed: string;
   roll: number;
+  timeUntilStart: number;
 }
 
 export interface DiceBet {

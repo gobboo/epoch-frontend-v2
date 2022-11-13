@@ -28,7 +28,6 @@ class Client {
 
 		// Check if the socket got connected
 		this.socket.on('connect', () => {
-			console.log('connected')
 			this.connected = true;
 		});
 
@@ -52,9 +51,6 @@ class Client {
 
 	public emit(event: string, args: any, callback): void {
 		if (!this.connected) return;
-
-		console.log(this.connected);
-		console.log(this.socket);
 
 		this.socket.emit(event, args, (response: any) => {
 			if (!response.success) {

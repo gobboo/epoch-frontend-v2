@@ -13,7 +13,7 @@ interface JoinData {
 	color: string
 }
 
-export const useDice = defineStore('dice', {
+export const useRoulette = defineStore('roulette', {
 	state: () => ({
 		currentGame: {} as RouletteInfo
 	}),
@@ -27,18 +27,14 @@ export const useDice = defineStore('dice', {
 				});
 
 				$socket.on('roulette:joined', (data: JoinData) => {
-					const game = this.games.find(game => game._id === data._id);
-
-					if (game) {
-						game.players.push({
+						this.currentGame.players.push({
 							user: data.user,
 							bet: data.bet,
 							color: data.color
 						});
-					}
 				});
 
-				$socket.on('roulette:finished', async (data: RouletteInfo) => {
+				$socket.on('roulette:ended', async (data: RouletteInfo) => {
 					this.currentGame = data;
 				});
 			}
